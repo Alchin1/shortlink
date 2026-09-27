@@ -1,12 +1,14 @@
 # ShortLink
 
-A small URL shortening REST API built with Java, Spring Boot, PostgreSQL, Maven, and Docker.
+A full-stack URL shortener built with Java, Spring Boot, PostgreSQL, vanilla JavaScript, Maven, and Docker.
 
 ## Features
 
+- Clean responsive web interface
 - Generate a random 7-character short code for a URL
+- Copy the generated short URL
 - Redirect short URLs to their original destination
-- Track click counts
+- Track click counts and view statistics
 - Optional expiration date/time
 - JSON error responses for invalid, missing, and expired links
 - PostgreSQL persistence
@@ -19,7 +21,7 @@ A small URL shortening REST API built with Java, Spring Boot, PostgreSQL, Maven,
 docker compose up --build
 ```
 
-The API will be available at `http://localhost:8080`.
+Then open `http://localhost:8080` in your browser. The web interface talks directly to the Spring Boot API.
 
 ## API
 
@@ -58,4 +60,4 @@ mvn test
 
 ## Project structure
 
-The `link` package contains the JPA entity, repository, service, controller, and link-specific exceptions. `ApiExceptionHandler` converts common failures into useful HTTP responses.
+The `link` package contains the JPA entity, repository, service, controller, and link-specific exceptions. `ApiExceptionHandler` converts common failures into useful HTTP responses. The frontend lives in `src/main/resources/static` and is served by Spring Boot.
