@@ -1,0 +1,23 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: shortlink
+      POSTGRES_USER: shortlink
+      POSTGRES_PASSWORD: shortlink
+    volumes:
+      - shortlink_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      DB_URL: jdbc:postgresql://db:5432/shortlink
+      DB_USER: shortlink
+      DB_PASSWORD: shortlink
+    depends_on:
+      - db
+
+volumes:
+  shortlink_data:
